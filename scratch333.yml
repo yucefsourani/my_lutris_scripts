@@ -1,0 +1,25 @@
+name: Scratch 3 Desktop Editor
+game_slug: Scratch-3-desktop-editor
+version: Installer
+slug: Scratch-3-installer-desktop-editor-installer
+runner: wine
+script:
+  game:
+    arch: win32
+    exe: drive_c/users/$USER/Local Settings/Application Data/Programs/scratch-desktop/Scratch Desktop.exe
+    prefix: $GAMEDIR
+    working_dir: $GAMEDIR
+    args: --some-args
+  files:
+  - setupfile : N/A:Select Scratch 3 Desktop Editor setup file
+  installer:
+  - task:
+      arch: win32
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      description: Installing Scratch 3 Desktop Editor
+      executable: setupfile
+      name: wineexec
+      prefix: $GAMEDIR
+
